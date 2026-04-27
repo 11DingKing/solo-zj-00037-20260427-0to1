@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: whiteboard-postgres
+    environment:
+      POSTGRES_DB: whiteboard
+      POSTGRES_USER: whiteboard
+      POSTGRES_PASSWORD: whiteboard123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - whiteboard-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U whiteboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    platform: linux/arm64/v8
+
+  redis:
+    image: redis:7-alpine
+    container_name: whiteboard-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - whiteboard-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    platform: linux/arm64/v8
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: whiteboard-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__PostgreSQL=Host=postgres;Database=whiteboard;Username=whiteboard;Password=whiteboard123
+      - ConnectionStrings__Redis=redis:6379
+      - Jwt__Key=your-super-secret-jwt-key-here-at-least-32-characters
+      - Jwt__Issuer=whiteboard-app
+      - Jwt__Audience=whiteboard-users
+      - Jwt__ExpiryInMinutes=60
+    ports:
+      - "5000:80"
+      - "5001:443"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - whiteboard-network
+    platform: linux/arm64/v8
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: whiteboard-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - whiteboard-network
+    platform: linux/arm64/v8
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  whiteboard-network:
+    driver: bridge
