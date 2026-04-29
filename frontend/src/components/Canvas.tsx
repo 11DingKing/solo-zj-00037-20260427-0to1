@@ -28,12 +28,7 @@ import {
 import {
   CanvasElement,
   Point,
-  PenElement,
   LineElement,
-  RectangleElement,
-  CircleElement,
-  TextElement,
-  StickyElement,
   ArrowElement,
 } from "@/types";
 
@@ -41,7 +36,7 @@ interface CanvasProps {
   boardId: string;
 }
 
-const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
+const Canvas: React.FC<CanvasProps> = ({ boardId: _boardId }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<CanvasRenderer | null>(null);
@@ -86,7 +81,7 @@ const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
   const [elementsBeforeDrag, setElementsBeforeDrag] = useState<CanvasElement[]>(
     [],
   );
-  const [editingTextId, setEditingTextId] = useState<string | null>(null);
+  const [_editingTextId, setEditingTextId] = useState<string | null>(null);
   const [lastCursorPos, setLastCursorPos] = useState<Point>({ x: 0, y: 0 });
 
   // 初始化画布

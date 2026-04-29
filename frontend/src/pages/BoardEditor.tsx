@@ -33,14 +33,14 @@ const BoardEditor: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [showShareModal, setShowShareModal] = useState(false);
   const [inviteCode, setInviteCode] = useState("");
-  const [showTools, setShowTools] = useState(true);
-  const [showProperties, setShowProperties] = useState(true);
+  const [showTools] = useState(true);
+  const [showProperties] = useState(true);
 
   const { setTool } = useToolStore();
   const { elements, setElements } = useElementStore();
   const { selectedIds, selectMultiple } = useSelectionStore();
   const { pushHistory, undo, redo, canUndo, canRedo } = useHistoryStore();
-  const { user } = useAuthStore();
+  useAuthStore();
 
   // 加载白板数据
   useEffect(() => {
@@ -168,13 +168,11 @@ const BoardEditor: React.FC = () => {
     selectMultiple([]);
   };
 
-  const handleGroup = () => {
-    // 编组功能 - 在实际项目中需要更复杂的实现
-  };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  void (() => { /* handleGroup placeholder */ });
 
-  const handleUngroup = () => {
-    // 解组功能
-  };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function  
+  void (() => { /* handleUngroup placeholder */ });
 
   const handleExport = async () => {
     // 导出功能 - 在实际项目中实现

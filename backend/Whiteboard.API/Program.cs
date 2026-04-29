@@ -53,11 +53,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
 builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString!));
 
-// Identity
-builder.Services.AddIdentityCore<User>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
-
+// Custom password hashing (not using Identity framework)
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 // JWT Authentication

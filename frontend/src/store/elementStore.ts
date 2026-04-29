@@ -25,7 +25,7 @@ export const useElementStore = create<ElementStore>((set, get) => ({
   updateElement: (id, updates) =>
     set((state) => ({
       elements: state.elements.map((el) =>
-        el.id === id ? { ...el, ...updates, updatedAt: Date.now() } : el,
+        el.id === id ? ({ ...el, ...updates, updatedAt: Date.now() } as CanvasElement) : el,
       ),
     })),
 

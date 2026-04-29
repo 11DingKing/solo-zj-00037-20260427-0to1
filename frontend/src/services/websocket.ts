@@ -1,7 +1,6 @@
 import {
   WsMessage,
   WsMessageType,
-  CursorPosition,
   OnlineUser,
   CanvasElement,
 } from "@/types";

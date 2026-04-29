@@ -20,9 +20,9 @@ export const useCanvasStore = create<CanvasStore>((set) => ({
   setOffset: (x, y) => set({ offsetX: x, offsetY: y }),
 
   setZoom: (zoom) =>
-    set((state) => ({
+    set({
       zoom: Math.min(Math.max(zoom, MIN_ZOOM), MAX_ZOOM),
-    })),
+    }),
 
   translate: (dx, dy) =>
     set((state) => ({

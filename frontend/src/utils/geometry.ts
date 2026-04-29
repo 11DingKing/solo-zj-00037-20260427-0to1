@@ -1,4 +1,4 @@
-import { Point, BoundingBox, CanvasElement, Transform } from "@/types";
+import { Point, BoundingBox, CanvasElement } from "@/types";
 
 export const screenToWorld = (
   screenX: number,

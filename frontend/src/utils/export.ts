@@ -1,4 +1,4 @@
-import { CanvasElement, Point } from "@/types";
+import { CanvasElement } from "@/types";
 import { getBoundingBox } from "./geometry";
 
 export const exportToPNG = (
