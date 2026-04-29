@@ -216,7 +216,7 @@ const BoardList: React.FC = () => {
                     type="text"
                     value={newBoardName}
                     onChange={(e) => setNewBoardName(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
                     placeholder="输入白板名称"
                     autoFocus
                     required
@@ -229,7 +229,7 @@ const BoardList: React.FC = () => {
                   <textarea
                     value={newBoardDescription}
                     onChange={(e) => setNewBoardDescription(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
                     placeholder="输入白板描述"
                     rows={3}
                   />

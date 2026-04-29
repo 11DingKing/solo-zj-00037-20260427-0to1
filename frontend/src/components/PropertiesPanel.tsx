@@ -47,7 +47,7 @@ const PropertiesPanel: React.FC = () => {
               type="number"
               value={Math.round(element.x)}
               onChange={(e) => handleChange("x", parseFloat(e.target.value))}
-              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
           <div>
@@ -56,7 +56,7 @@ const PropertiesPanel: React.FC = () => {
               type="number"
               value={Math.round(element.y)}
               onChange={(e) => handleChange("y", parseFloat(e.target.value))}
-              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
         </div>
@@ -78,7 +78,7 @@ const PropertiesPanel: React.FC = () => {
               onChange={(e) =>
                 handleChange("width", parseFloat(e.target.value))
               }
-              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
           <div>
@@ -89,7 +89,7 @@ const PropertiesPanel: React.FC = () => {
               onChange={(e) =>
                 handleChange("height", parseFloat(e.target.value))
               }
-              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
             />
           </div>
         </div>
@@ -241,7 +241,7 @@ const PropertiesPanel: React.FC = () => {
               <textarea
                 value={element.content}
                 onChange={(e) => handleChange("content", e.target.value)}
-                className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
                 rows={3}
               />
             </div>
@@ -285,7 +285,7 @@ const PropertiesPanel: React.FC = () => {
               <textarea
                 value={element.content}
                 onChange={(e) => handleChange("content", e.target.value)}
-                className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
+                className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
                 rows={5}
               />
             </div>

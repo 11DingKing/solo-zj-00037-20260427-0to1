@@ -18,9 +18,18 @@ const Login: React.FC = () => {
 
     try {
       const response = await authApi.login(email, password);
-      const { userId, username, email: responseEmail, token, avatarColor } = response.data;
+      const {
+        userId,
+        username,
+        email: responseEmail,
+        token,
+        avatarColor,
+      } = response.data;
 
-      setAuth({ id: userId, username, email: responseEmail, avatarColor }, token);
+      setAuth(
+        { id: userId, username, email: responseEmail, avatarColor },
+        token,
+      );
 
       navigate("/");
     } catch (err: any) {
@@ -55,7 +64,7 @@ const Login: React.FC = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
               placeholder="请输入邮箱"
               required
             />
@@ -69,7 +78,7 @@ const Login: React.FC = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
               placeholder="请输入密码"
               required
             />
