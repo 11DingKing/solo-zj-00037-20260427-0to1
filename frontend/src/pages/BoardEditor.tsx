@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
@@ -6,20 +6,8 @@ import {
   Download,
   Undo2,
   Redo2,
-  MousePointer2,
-  Pencil,
   Minus,
-  Square,
-  Circle,
-  Type,
-  StickyNote,
-  ArrowRight,
-  Trash2,
-  Group,
-  Ungroup,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
+  Plus,
   MoreVertical,
 } from "lucide-react";
 import Canvas from "@/components/Canvas";
@@ -35,10 +23,8 @@ import {
   useToolStore,
   useSelectionStore,
   useHistoryStore,
-  useCollaborationStore,
   useAuthStore,
 } from "@/store";
-import { ToolType, Point } from "@/types";
 
 const BoardEditor: React.FC = () => {
   const { id: boardId } = useParams<{ id: string }>();
@@ -50,11 +36,10 @@ const BoardEditor: React.FC = () => {
   const [showTools, setShowTools] = useState(true);
   const [showProperties, setShowProperties] = useState(true);
 
-  const { type: currentTool, setTool } = useToolStore();
+  const { setTool } = useToolStore();
   const { elements, setElements } = useElementStore();
   const { selectedIds, selectMultiple } = useSelectionStore();
-  const { past, present, future, pushHistory, undo, redo, canUndo, canRedo } =
-    useHistoryStore();
+  const { pushHistory, undo, redo, canUndo, canRedo } = useHistoryStore();
   const { user } = useAuthStore();
 
   // 加载白板数据

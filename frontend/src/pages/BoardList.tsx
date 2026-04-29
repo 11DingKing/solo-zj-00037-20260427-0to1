@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Plus, LogOut, MoreVertical, Users, Clock } from "lucide-react";
+import { Plus, LogOut, Users, Clock } from "lucide-react";
 import { boardApi } from "@/services/api";
 import { BoardListItem } from "@/types";
 import { useAuthStore } from "@/store";

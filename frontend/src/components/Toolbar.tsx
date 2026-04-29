@@ -9,7 +9,6 @@ import {
   StickyNote,
   ArrowRight,
   Trash2,
-  Palette,
 } from "lucide-react";
 import {
   useToolStore,

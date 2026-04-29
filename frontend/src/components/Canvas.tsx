@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { CanvasRenderer } from "@/utils/canvasRenderer";
 import {
   screenToWorld,
-  worldToScreen,
   pointInRect,
   normalizeSelectionRect,
   pointOnLine,
@@ -29,7 +28,6 @@ import {
 import {
   CanvasElement,
   Point,
-  ToolType,
   PenElement,
   LineElement,
   RectangleElement,
@@ -152,7 +150,7 @@ const Canvas: React.FC<CanvasProps> = ({ boardId }) => {
       // 绘制选择框
       if (isSelecting && selectionStart && selectionEnd) {
         const rect = normalizeSelectionRect(selectionStart, selectionEnd);
-        renderer.drawSelectionRect(
+        renderer.drawSelectionBox(
           rect.x,
           rect.y,
           rect.width,

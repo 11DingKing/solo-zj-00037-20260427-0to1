@@ -78,10 +78,10 @@ const Minimap: React.FC = () => {
     ctx.restore();
 
     // 绘制当前视口指示器
-    const canvas = document.querySelector("canvas:not(#minimap)");
-    if (canvas) {
-      const viewportWidth = canvas.clientWidth;
-      const viewportHeight = canvas.clientHeight;
+    const mainCanvas = document.querySelector("canvas:not(#minimap)");
+    if (mainCanvas) {
+      const viewportWidth = mainCanvas.clientWidth;
+      const viewportHeight = mainCanvas.clientHeight;
 
       // 计算视口在世界坐标中的位置
       const vpLeft = -offsetX / zoom;

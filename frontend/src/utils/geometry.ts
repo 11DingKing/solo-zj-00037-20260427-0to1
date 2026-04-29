@@ -199,7 +199,7 @@ export const distributeHorizontal = (
 
   let currentX = sorted[0].x;
 
-  return sorted.map((el, index) => {
+  return sorted.map((el, _index) => {
     const newEl = { ...el, x: currentX, updatedAt: Date.now() };
     currentX += el.width + space;
     return newEl;
@@ -221,7 +221,7 @@ export const distributeVertical = (
 
   let currentY = sorted[0].y;
 
-  return sorted.map((el, index) => {
+  return sorted.map((el, _index) => {
     const newEl = { ...el, y: currentY, updatedAt: Date.now() };
     currentY += el.height + space;
     return newEl;

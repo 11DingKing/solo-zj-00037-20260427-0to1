@@ -1,5 +1,6 @@
 import React from "react";
 import { useElementStore, useSelectionStore } from "@/store";
+import { CanvasElement } from "@/types";
 
 const PropertiesPanel: React.FC = () => {
   const { selectedIds } = useSelectionStore();
@@ -27,7 +28,7 @@ const PropertiesPanel: React.FC = () => {
   const element = selectedElements[0];
 
   const handleChange = (property: string, value: any) => {
-    updateElement(element.id, { [property]: value });
+    updateElement(element.id, { [property]: value } as Partial<CanvasElement>);
   };
 
   const renderProperties = () => {

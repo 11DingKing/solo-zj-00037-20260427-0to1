@@ -3,7 +3,7 @@ import { Users } from "lucide-react";
 import { useCollaborationStore } from "@/store";
 
 const OnlineUsers: React.FC = () => {
-  const { onlineUsers, cursorPositions } = useCollaborationStore();
+  const { onlineUsers } = useCollaborationStore();
 
   const activeUsers = onlineUsers.filter((u) => u.isOnline);
 
