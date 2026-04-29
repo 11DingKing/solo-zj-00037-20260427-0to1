@@ -150,7 +150,8 @@ app.Use(async (context, next) =>
             var path = context.Request.Path.Value;
             if (!string.IsNullOrEmpty(path) && Guid.TryParse(path.Split('/').Last(), out var boardId))
             {
-                var userId = context.User?.Identity?.Name;
+                var userIdClaim = context.User?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+                var userId = userIdClaim?.Value;
                 if (!string.IsNullOrEmpty(userId) && Guid.TryParse(userId, out var userGuid))
                 {
                     var webSocket = await context.WebSockets.AcceptWebSocketAsync();

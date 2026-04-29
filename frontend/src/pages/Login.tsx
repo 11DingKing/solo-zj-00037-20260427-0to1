@@ -18,9 +18,9 @@ const Login: React.FC = () => {
 
     try {
       const response = await authApi.login(email, password);
-      const { userId, username, token, avatarColor } = response.data;
+      const { userId, username, email: responseEmail, token, avatarColor } = response.data;
 
-      setAuth({ id: userId, username, email, avatarColor }, token);
+      setAuth({ id: userId, username, email: responseEmail, avatarColor }, token);
 
       navigate("/");
     } catch (err: any) {

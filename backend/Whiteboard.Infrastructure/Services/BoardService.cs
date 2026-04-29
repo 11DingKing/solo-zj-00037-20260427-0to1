@@ -16,7 +16,7 @@ public interface IBoardService
     Task<BoardDto?> JoinBoardByInviteCodeAsync(string inviteCode, Guid userId);
     Task<bool> UpdateBoardThumbnailAsync(Guid boardId, string thumbnailUrl);
     Task<List<BoardElement>> GetBoardElementsAsync(Guid boardId);
-    Task SaveBoardElementsAsync(Guid boardId, List<BoardElement> elements);
+    Task SaveBoardElementsAsync(Guid boardId, List<object> elements);
 }
 
 public class BoardService : IBoardService
@@ -213,7 +213,7 @@ public class BoardService : IBoardService
             .ToListAsync();
     }
 
-    public async Task SaveBoardElementsAsync(Guid boardId, List<BoardElement> elements)
+    public async Task SaveBoardElementsAsync(Guid boardId, List<object> elements)
     {
         var existingElements = await _context.BoardElements
             .Where(e => e.BoardId == boardId)
@@ -221,13 +221,21 @@ public class BoardService : IBoardService
 
         _context.BoardElements.RemoveRange(existingElements);
 
-        foreach (var element in elements)
+        var newElements = new List<BoardElement>();
+        for (int i = 0; i < elements.Count; i++)
         {
-            element.BoardId = boardId;
-            element.Id = Guid.NewGuid();
+            var element = new BoardElement
+            {
+                Id = Guid.NewGuid(),
+                BoardId = boardId,
+                Type = "canvas-element",
+                Data = System.Text.Json.JsonSerializer.Serialize(elements[i]),
+                Order = i,
+            };
+            newElements.Add(element);
         }
 
-        _context.BoardElements.AddRange(elements);
+        _context.BoardElements.AddRange(newElements);
         await _context.SaveChangesAsync();
     }
 

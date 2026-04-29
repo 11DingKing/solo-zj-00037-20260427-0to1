@@ -125,7 +125,7 @@ public class BoardsController : ControllerBase
     }
 
     [HttpPut("{id}/elements")]
-    public async Task<IActionResult> SaveBoardElements(Guid id, [FromBody] List<BoardElement> elements)
+    public async Task<IActionResult> SaveBoardElements(Guid id, [FromBody] List<object> elements)
     {
         await _boardService.SaveBoardElementsAsync(id, elements);
         return NoContent();

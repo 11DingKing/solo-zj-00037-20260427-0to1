@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -19,7 +19,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    platform: linux/arm64/v8
+    platform: linux/arm64
 
   redis:
     image: redis:7-alpine
@@ -35,7 +35,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    platform: linux/arm64/v8
+    platform: linux/arm64
 
   backend:
     build:
@@ -60,7 +60,7 @@ services:
         condition: service_healthy
     networks:
       - whiteboard-network
-    platform: linux/arm64/v8
+    platform: linux/arm64
 
   frontend:
     build:
@@ -73,7 +73,7 @@ services:
       - backend
     networks:
       - whiteboard-network
-    platform: linux/arm64/v8
+    platform: linux/arm64
 
 volumes:
   postgres_data:

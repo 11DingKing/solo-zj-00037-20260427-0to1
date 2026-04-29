@@ -31,9 +31,23 @@ const Register: React.FC = () => {
 
     try {
       const response = await authApi.register(username, email, password);
-      const { userId, token, avatarColor } = response.data;
+      const {
+        userId,
+        username: responseUsername,
+        email: responseEmail,
+        token,
+        avatarColor,
+      } = response.data;
 
-      setAuth({ id: userId, username, email, avatarColor }, token);
+      setAuth(
+        {
+          id: userId,
+          username: responseUsername,
+          email: responseEmail,
+          avatarColor,
+        },
+        token,
+      );
 
       navigate("/");
     } catch (err: any) {
