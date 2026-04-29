@@ -139,8 +139,8 @@ public class WebSocketService : IWebSocketService
                     var cursorPayload = JsonSerializer.Deserialize<WsMessage<CursorPayload>>(messageJson, _jsonOptions);
                     if (cursorPayload != null)
                     {
-                        cursorPayload.UserId = userId;
-                        await BroadcastToBoardAsync(boardId, cursorPayload, userId);
+                        var cursorWithUser = cursorPayload with { UserId = userId };
+                        await BroadcastToBoardAsync(boardId, cursorWithUser, userId);
                     }
                     break;
 
